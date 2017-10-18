@@ -1,5 +1,8 @@
 # Helmsman
 
+[![Build
+Status](https://travis-ci.org/cjonesy/helmsman.svg?branch=master)](https://travis-ci.org/cjonesy/helmsman)
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
