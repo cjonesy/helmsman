@@ -1,0 +1,27 @@
+language: elixir
+
+branches:
+  only:
+    - "master"
+
+cache:
+  directories:
+    - deps
+    - _build
+
+otp_release:
+  - 20.0
+elixir:
+  - 1.5.2
+
+dist: trusty
+sudo: required
+services:
+  - docker
+
+before_script:
+  - IP_IFACE=eth0 ./ci/docker_up.sh
+script:
+  - mkdir -p priv/repo/migrations
+  - MIX_ENV=test mix deps.compile
+  - mix test
