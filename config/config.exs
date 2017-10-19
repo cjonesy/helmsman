@@ -7,7 +7,17 @@ use Mix.Config
 
 # General application configuration
 config :helmsman,
-  ecto_repos: [Helmsman.Repo]
+  ecto_repos: [Helmsman.Repo],
+  kafka_clusters: [
+    [
+      name: "Test cluster",
+      brokers: [
+        {"localhost", 9092},
+        {"localhost", 9093},
+        {"localhost", 9094}
+      ]
+    ]
+  ]
 
 # Configures the endpoint
 config :helmsman, HelmsmanWeb.Endpoint,
@@ -21,6 +31,9 @@ config :helmsman, HelmsmanWeb.Endpoint,
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
+
+config :kafka_ex,
+  disable_default_worker: true
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
