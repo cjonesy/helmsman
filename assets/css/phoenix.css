@@ -26,7 +26,7 @@ body, form, ul, table {
   height: 71px;
   display: inline-block;
   margin-bottom: 1em;
-  background-image: url("/images/phoenix.png");
+  font-size: 50px;
   background-size: 519px 71px;
 }
 
