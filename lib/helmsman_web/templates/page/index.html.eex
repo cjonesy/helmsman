@@ -4,6 +4,7 @@
   <ul>
     <%= for cluster <- @clusters do %>
       <li><%= cluster.name %> - <%= connection_strings(cluster.configured_brokers) %></li>
+      <li><%= cluster.name %> - <%= connection_strings(cluster.advertised_brokers) %></li>
     <% end %>
   </ul>
 
