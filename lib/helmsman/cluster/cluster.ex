@@ -1,5 +1,5 @@
 defmodule Helmsman.Cluster do
-  defstruct name: nil, configured_brokers: []
+  defstruct name: nil, configured_brokers: [], advertised_brokers: []
 
   @type t :: %__MODULE__{}
 
@@ -10,7 +10,13 @@ defmodule Helmsman.Cluster do
     Enum.map(cluster_configs, &from_config/1)
   end
 
+  def determine_advertised_brokers(configured_brokers) do
+    KafkaEx.create_worker(:helmsman_probe, [uris: configured_brokers, consumer_group: :no_consumer_group])
+    metadata = KafkaEx.metadata(worker_name: :helmsman_probe)
+    Enum.map(metadata.brokers, fn(broker) -> {broker.host, broker.port} end)
+  end
+
   def from_config([name: name, brokers: brokers]) do
-    %Cluster{name: name, configured_brokers: brokers}
+    %Cluster{name: name, configured_brokers: brokers, advertised_brokers: determine_advertised_brokers(brokers)}
   end
 end

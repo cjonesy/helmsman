@@ -20,6 +20,9 @@ defmodule HelmsmanWeb.PageControllerTest do
         for {broker_host, broker_port} <- cluster.configured_brokers do
           assert response =~ "#{broker_host}:#{broker_port}"
         end
+        for {broker_host, broker_port} <- cluster.advertised_brokers do
+          assert response =~ "#{broker_host}:#{broker_port}"
+        end
       end
     end
   end
