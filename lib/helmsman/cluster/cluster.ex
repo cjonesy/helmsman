@@ -11,9 +11,9 @@ defmodule Helmsman.Cluster do
   end
 
   def determine_advertised_brokers(configured_brokers) do
-    KafkaEx.create_worker(:worker_foo, [uris: configured_brokers, consumer_group: "meh"])
-    KafkaEx.metadata(worker_name: :worker_foo).brokers
-    |> Enum.map(fn(broker) -> {broker.host, broker.port} end)
+    KafkaEx.create_worker(:helmsman_probe, [uris: configured_brokers, consumer_group: :no_consumer_group])
+    metadata = KafkaEx.metadata(worker_name: :helmsman_probe)
+    Enum.map(metadata.brokers, fn(broker) -> {broker.host, broker.port} end)
   end
 
   def from_config([name: name, brokers: brokers]) do

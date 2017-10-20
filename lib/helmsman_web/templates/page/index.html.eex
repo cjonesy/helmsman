@@ -3,8 +3,14 @@
 
   <ul>
     <%= for cluster <- @clusters do %>
-      <li><%= cluster.name %> - <%= connection_strings(cluster.configured_brokers) %></li>
-      <li><%= cluster.name %> - <%= connection_strings(cluster.advertised_brokers) %></li>
+      <li><%= cluster.name %>
+        <dl>
+          <dt>Configured Brokers</dt>
+          <dd><%= connection_strings(cluster.configured_brokers) %></dd>
+          <dt>Advertised Brokers</dt>
+          <dd><%= connection_strings(cluster.advertised_brokers) %></dd>
+        </dl>
+      </li>
     <% end %>
   </ul>
 
