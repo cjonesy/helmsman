@@ -25,3 +25,5 @@ script:
   - mkdir -p priv/repo/migrations
   - MIX_ENV=test mix deps.compile
   - mix test
+  - MIX_ENV=test mix credo --strict
+  - MIX_ENV=test mix dialyzer
