@@ -11,6 +11,7 @@ defmodule Helmsman.Mixfile do
       start_permanent: Mix.env == :prod,
       aliases: aliases(),
       dialyzer: [
+        plt_add_apps: [:ex_unit],
         flags: ["-Werror_handling", "-Wrace_conditions"]
       ],
       deps: deps()
