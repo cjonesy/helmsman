@@ -10,6 +10,10 @@ defmodule Helmsman.Mixfile do
       compilers: [:phoenix, :gettext] ++ Mix.compilers,
       start_permanent: Mix.env == :prod,
       aliases: aliases(),
+      dialyzer: [
+        plt_add_apps: [:ex_unit],
+        flags: ["-Werror_handling", "-Wrace_conditions"]
+      ],
       deps: deps()
     ]
   end
@@ -39,6 +43,8 @@ defmodule Helmsman.Mixfile do
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.10"},
       {:kafka_ex, "~> 0.8.0"},
+      {:credo, "~> 0.8.8", only: [:dev, :test]},
+      {:dialyxir, "~> 0.5.1", only: [:dev, :test]},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"}

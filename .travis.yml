@@ -25,3 +25,4 @@ script:
   - mkdir -p priv/repo/migrations
   - MIX_ENV=test mix deps.compile
   - mix test
+  - MIX_ENV=test travis_wait mix dialyzer
