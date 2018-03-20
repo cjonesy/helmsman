@@ -10,7 +10,7 @@ cache:
     - _build
 
 otp_release:
-  - 20.3
+  - 20.2
 elixir:
   - 1.6.4
 
