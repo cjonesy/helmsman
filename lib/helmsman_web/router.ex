@@ -16,7 +16,7 @@ defmodule HelmsmanWeb.Router do
   scope "/", HelmsmanWeb do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", ClusterController, :index
   end
 
   # Other scopes may use custom stacks.
