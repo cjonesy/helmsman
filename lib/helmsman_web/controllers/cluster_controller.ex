@@ -1,4 +1,4 @@
-defmodule HelmsmanWeb.PageController do
+defmodule HelmsmanWeb.ClusterController do
   use HelmsmanWeb, :controller
 
   def index(conn, _params) do

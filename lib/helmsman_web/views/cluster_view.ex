@@ -1,4 +1,4 @@
-defmodule HelmsmanWeb.PageView do
+defmodule HelmsmanWeb.ClusterView do
   use HelmsmanWeb, :view
 
   def connection_strings(brokers) do

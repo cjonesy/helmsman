@@ -1,4 +1,4 @@
-defmodule HelmsmanWeb.PageControllerTest do
+defmodule HelmsmanWeb.ClusterControllerTest do
   use HelmsmanWeb.ConnCase
 
   alias Helmsman.Cluster
